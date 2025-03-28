@@ -1,40 +1,30 @@
-# Python-number-finder
+#Python-number-finder-
 
-import phonenumbers
-from phonenumbers import timezone
-from phonenumbers import geocoder
-from phonenumbers import carrier
 
-def obter_informacoes_telefone(numero):
-    """
-    Obtém informações de fuso horário, localização e operadora de um número de telefone.
+Descubra Tudo Sobre um Número de Telefone com Python!
+Já se perguntou de onde é um número de telefone, qual operadora ele usa ou em qual fuso horário ele está? Este script Python te ajuda a descobrir tudo isso e muito mais!
 
-    Args:
-        numero: O número de telefone a ser analisado (string).
-    """
-    try:
-        # Analisa o número de telefone
-        numero_telefone = phonenumbers.parse(numero)
+O Que Ele Faz?
+Com este script, você pode obter informações valiosas sobre um número de telefone, como:
 
-        # Obtém os fusos horários associados ao número
-        fusos_horarios = timezone.time_zones_for_number(numero_telefone)
-        print("Fuso(s) horário(s):", fusos_horarios)
+Fuso Horário: Descubra em quais fusos horários o número está localizado.
+Localização: Saiba a localização geográfica do número (cidade, estado, país).
+Operadora: Descubra qual operadora de telefonia o número utiliza.
+Como Usar?
 
-        # Obtém a localização geográfica do número
-        localizacao = geocoder.description_for_number(numero_telefone, "pt") # "pt" para Português
-        print("Localização:", localizacao)
+Instale as Bibliotecas: Primeiro, você precisa ter a biblioteca phonenumbers instalada. Se ainda não tiver, abra o terminal e digite:
+--pip install phonenumbers 
 
-        # Obtém o nome da operadora do número
-        operadora = carrier.name_for_number(numero_telefone, "pt") # "pt" para Português
-        print("Operadora:", operadora)
+Execute o Script: Salve o código Python em um arquivo (por exemplo, info_telefone.py) e execute-o no terminal:
+--python info_telefone.py
 
-    except phonenumbers.phonenumberutil.NumberParseException:
-        print("Número de telefone inválido.")
-    except Exception as e:
-        print(f"Ocorreu um erro inesperado: {e}")
+Digite o Número: O script vai pedir para você digitar o número de telefone. Lembre-se de incluir o código do país (por exemplo, +55 para o Brasil).
 
-# Solicita o número de telefone ao usuário
-numero_telefone = input("Digite o número de telefone com o código do país: ")
+Veja as Informações: O script vai mostrar as informações de fuso horário, localização e operadora do número.
 
-# Chama a função para obter as informações
-obter_informacoes_telefone(numero_telefone)
+Exemplo
+Se você digitar o número +5511999999999, o script pode mostrar algo como:
+
+Fuso(s) horário(s): ['America/Sao_Paulo']
+Localização: São Paulo, Brasil
+Operadora: Vivo
